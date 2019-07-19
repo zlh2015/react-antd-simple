@@ -1,9 +1,9 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import createSagaMiddleware from 'redux-saga';
+import rootReducers from './Reducers';
+import rootSagas from './Sagas';
 
-const rootReducers = {
-  routing: routerReducer,
-};
+const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers(rootReducers);
 const win = window;
 const middlewares = [];
@@ -11,6 +11,7 @@ const middlewares = [];
 if (process.env.NODE_ENV !== 'production') {
   middlewares.push(require('redux-immutable-state-invariant').default());
 }
+middlewares.push(sagaMiddleware);
 
 const storeEnhancers = compose(
   applyMiddleware(...middlewares),
@@ -19,4 +20,5 @@ const storeEnhancers = compose(
 
 const initialState = {};
 const Store = createStore(reducer, initialState, storeEnhancers);
+sagaMiddleware.run(rootSagas);
 export default Store;

@@ -5,11 +5,11 @@ const request = (config) => {
   return axios.request(config).then((res) => {
     return res.data;
   }).then((resJson) => {
-    if (resJson.status !== "ok") {
+    if (resJson.status !== "success") {
       // 后台自定义错误
       message.error(resJson.message);
       if(resJson.code === 401){
-        window.location = "/login"
+        window.location = "/signin"
       }
     } 
     return resJson;
