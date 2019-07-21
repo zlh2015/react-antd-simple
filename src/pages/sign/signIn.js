@@ -3,6 +3,7 @@ import { Layout, Input, Checkbox, Icon, Button, Form } from 'antd';
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { signIn } from './actions';
+import logo from '../../assets/images/leaf_logo.svg';
 import styles from './signin.module.css';
 
 const { Header, Content, Footer} = Layout;
@@ -12,9 +13,10 @@ const SignInPage = (props) => {
   const { form, onSignIn } = props;
   const formItemLayout = {
     labelCol: { span: 0 },
-    wrapperCol: { span: 6 },
+    wrapperCol: { span: 24 },
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const formVal = {a:"fff", b:"ggg"};
     if(onSignIn){
       onSignIn(formVal);
@@ -24,49 +26,53 @@ const SignInPage = (props) => {
   return (
     <Layout>
       <Header className={styles.header}>
-        <h1>signin page</h1>
+        <a href="/">
+          <img src={logo} alt="react antd simple" />
+          <span>React antd simple</span>
+        </a>
       </Header>
       <Content className={styles.content}>
-        <Form {...formItemLayout} onSubmit={handleSubmit} className={styles.form} >
-          <h3>欢迎登录</h3>
-          <Form.Item label="">
-            {
-              form.getFieldDecorator('userName', {
-                rules: [{
-                  required: true,
-                  message: "请输入用户名"
-                }]
-              })(<Input 
-                    placeholder={'用户名'}
-                    prefix={<Icon type='user' />}
-                    size={'large'}
-              />)
-            }
-          </Form.Item>
-          <Form.Item label="">
-            {
-              form.getFieldDecorator('password', {
-                rules: [{
-                  required: true,
-                  message: "请输入密码"
-                }]
-              })(<Input 
-                    placeholder={'密码'}
-                    type={'password'}
-                    prefix={<Icon type='eye' />}
-                    size={'large'}
-              />)
-            }
-          </Form.Item>
-          <Form.Item>
-            <Checkbox>记住</Checkbox>
-            <a className={styles['login-form-forgot']} href="/">忘记密码</a>
-            <Button type="primary" htmlType="submit" className={styles['login-form-button']}>
-              登录
-            </Button>
-            {/* <a href="/">注册</a> */}
-          </Form.Item>
-        </Form>
+        <div className={styles['full-width']}>
+          <Form {...formItemLayout} onSubmit={handleSubmit} className={styles.form} >
+            <img src={logo} alt="react antd simple" />
+            <h3>登录 XXRAS</h3>
+            <Form.Item label="">
+              {
+                form.getFieldDecorator('userName', {
+                  rules: [{
+                    required: true,
+                    message: "请输入用户名"
+                  }]
+                })(<Input 
+                      placeholder={'用户名'}
+                      prefix={<Icon type='user' />}
+                />)
+              }
+            </Form.Item>
+            <Form.Item label="">
+              {
+                form.getFieldDecorator('password', {
+                  rules: [{
+                    required: true,
+                    message: "请输入密码"
+                  }]
+                })(<Input 
+                      placeholder={'密码'}
+                      type={'password'}
+                      prefix={<Icon type='eye' />}
+                />)
+              }
+            </Form.Item>
+            <Form.Item>
+              <Checkbox className={styles['form-signin-check']}>记住</Checkbox>
+              <a className={styles['form-signin-link']} href="/signup">注册</a>
+              <Button type="primary" htmlType="submit" className={styles['form-signin-btn']}>
+                登录
+              </Button>
+              {/* <a href="/">注册</a> */}
+            </Form.Item>
+          </Form>
+        </div>
       </Content>
       <Footer className={styles.footer}>
         <span>版权所有 © HG有限公司 2019</span>

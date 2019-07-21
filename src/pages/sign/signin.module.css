@@ -1,10 +1,62 @@
-.header {
+.header  {
     height: 48px;
     line-height: 48px;
 }
 
+.header a {
+    display: flex;
+    height: 48px;
+    margin-left: 15%;
+    text-align: left;
+    align-items: center;
+}
+
+.header img {
+    flex: 0 0 36px;
+    width: 32px;
+    height: 32px;
+}
+
+.header span {
+    flex: 0 0 auto;
+    padding-left: 0.5em;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 .content {
-    height: calc(100vh - 96px);
+    min-height: calc(100vh - 96px);
+    display: flex;
+    align-items: center;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form {
+    width: 295px;
+    height: 380px;
+    margin: 0 auto;
+}
+
+.form img {
+    width: 5em;
+    height: 5em;
+    margin-bottom: 0.5em;
+}
+
+.form-signin-check{
+    float: left;
+}
+
+.form-signin-link{
+    float: right;
+}
+
+.form-signin-btn {
+    width: 100%;
 }
 
 .footer {
