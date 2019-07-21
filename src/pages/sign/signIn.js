@@ -34,7 +34,7 @@ const SignInPage = (props) => {
       <Content className={styles.content}>
         <div className={styles['full-width']}>
           <Form {...formItemLayout} onSubmit={handleSubmit} className={styles.form} >
-            <img src={logo} alt="react antd simple" />
+            <img src={logo} alt="" />
             <h3>登录 XXRAS</h3>
             <Form.Item label="">
               {
