@@ -1,7 +1,7 @@
 import Loadable from 'react-loadable';
 import * as actions from './actions';
 import * as sagas from './sagas';
-import { pageLoader } from '../../components/pageLoader';
+import { pageLoader } from '../../components/loader';
 
 const signInPage = Loadable({
     loader: () => import('./signIn'),

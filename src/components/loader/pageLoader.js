@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spin } from 'antd';
-import styles from './loader.module.css';
+import styles from './pageLoader.module.css';
 
 const pageLoader = (props) => {
   if(props.error){
