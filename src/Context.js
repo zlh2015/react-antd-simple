@@ -4,7 +4,7 @@ const GlobalContext = React.createContext()
 const GlobalProvider = GlobalContext.Provider;
 const RouteComsumer = (props) =>{
   console.log('route',props);
-  const path = props.path ? props.path : props;
+  const path = props.path ? props.path : "/";
   return (
     <GlobalContext.Consumer>
       {

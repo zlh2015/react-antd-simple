@@ -2,6 +2,7 @@
 import Loadable from 'react-loadable';
 import { signInPage, signUpPage, signOutPage} from './pages/sign';
 import { pageLoader } from './components/loader';
+import App from './App'
 
 const AppPage = Loadable({
     loader: () => import('./App'),
@@ -14,7 +15,7 @@ const menuData = {
   "label": "平台",
   "path": "/",
   "menu": false,
-  "component": AppPage,
+  "component": App,
   "redirect": '/signin',
   "children": [
     {

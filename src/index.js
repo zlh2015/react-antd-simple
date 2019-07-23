@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
+import { GlobalProvider } from './Context';
 import en from 'react-intl/locale-data/en';
 import zh from 'react-intl/locale-data/zh';
 import * as LocaleMap from './locale'; 
@@ -20,11 +21,11 @@ const mt = menuTranslater(menuData);
 ReactDOM.render(
   <IntlProvider locale={LocaleMap.getLang()} messages={LocaleMap.getMessage()}>
     <Provider store={Store}>
-      <BrowserRouter >
-        {
-            mt.getRoute()
-        }
-      </BrowserRouter> 
+      <GlobalProvider value={{mt}}>
+        <BrowserRouter >
+          <App />
+        </BrowserRouter> 
+      </GlobalProvider>
     </Provider>
   </IntlProvider>,
   document.getElementById('root')

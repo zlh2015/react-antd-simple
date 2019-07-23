@@ -18,21 +18,6 @@ const menuTranslater = (menu) => {
     });
   }
 
-  const getRoutes = (data, prePath) => {
-    return data.children ? 
-      data.children.map(item => {
-        const routePath = prePath ? item.path.slice(prePath.length, item.path.length) : data.path;
-        return <Route path={routePath} component={item.component}>
-          {
-            item.children ? getRoutes(item, item.path) : null
-
-          }
-          </Route>
-      })
-      :
-      null;
-  }
-
   mapper([menu]);
   console.log(pathMap, keyMap);
   return {
@@ -51,10 +36,16 @@ const menuTranslater = (menu) => {
       return null;
       // return redirect; 
     },
-    getRoute: () => {
-      console.log(getRoutes(menu, ""));
-      return getRoutes(menu, "");
-    }
+    getRouteByPath: (path) => {
+      return path && pathMap[path] && pathMap[path].children ?
+        pathMap[path].children.map(
+          (item) => {
+            return <Route path={item.path} component={item.component ? item.component : null} exact={item.exact ? true : false} />
+          }
+        )
+        :
+        null
+      }
   }
 }
 
