@@ -1,17 +1,27 @@
+
+import Loadable from 'react-loadable';
 import { signInPage, signUpPage, signOutPage} from './pages/sign';
+import { pageLoader } from './components/loader';
+
+const AppPage = Loadable({
+    loader: () => import('./App'),
+    loading: pageLoader,
+    delay: 300, // default is 200ms
+});
 
 const menuData = {
-  "key": "/",
+  "key": "root",
   "label": "平台",
   "path": "/",
   "menu": false,
-  "component": null,
+  "component": AppPage,
+  "redirect": '/signin',
   "children": [
     {
       "icon": "home",
       "key": "signin",
       "label": "登陆",
-      "path": "/sigin",
+      "path": "/signin",
       "menu": false,
       "component": signInPage,
     }, 

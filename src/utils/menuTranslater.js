@@ -1,57 +1,59 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 const menuTranslater = (menu) => {
   let pathMap = {};
   let keyMap = {};
-  if(!menu){
-    return {};
-  }
  
-  const mapper = (key, data) => {
+  const mapper = (data) => {
     data.map((item) => {
-      if(item.children){
-        mapper(item.key, item.children);
-      }else{ 
-        if(item.path){
-          pathMap[item.path] = Object.assign({}, item);
-        }
-        if(key){
-          keyMap[key + "." + item.key] = Object.assign({}, item);
-        }else{
-          keyMap[item.key] = Object.assign({}, item);
-        }
+      keyMap[item.key] = Object.assign({}, item);
+      if(item.path){
+        pathMap[item.path] = Object.assign({}, item);
       }
-      return null;
+      if(item.children){
+        mapper(item.children);
+      } 
+      return item;
     });
   }
 
-  mapper("", menu);
+  const getRoute = (data, prePath) => {
+    console.log(data.path, data.key);
+    const routePath = prePath ? data.path.split(prePath)[1] : data.path;
+    return (
+      prePath === '/' ? 
+      data.children ? data.children.map(item => getRoute(item, data.path)) : null
+      :
+      <Route path={routePath} component={data.component ? data.component : null} exact={data.exact ? data.exact : false} >
+        {
+          data.children ? data.children.map(item => getRoute(item, data.path)) : null
+        }
+      </Route>
+    );
+  }
+
+  mapper([menu]);
   console.log(pathMap, keyMap);
   return {
+    update: (data) => {
+      pathMap = {};
+      keyMap = {};
+      mapper([data]);
+    },
     getItemByKey: (key) => {
       return keyMap[key];
     },
     getItemByPath: (path) => {
-      return keyMap[path];
+      return pathMap[path];
     },
-    getRouteByKey: (key) => {
-      const children = keyMap[key].children;
-      if(!children) return null;
-      return children.map((item) => {
-        return (
-          <Route path={item.path} component={item.component}></Route>   
-        )
-      });
+    getRedirect: () => {
+      return null;
+      // return redirect; 
     },
     getRouteByPath: (path) => {
-      const children = pathMap[path].children;
-      if(!children) return null;
-      return children.map((item) => {
-        return (
-          <Route path={item.path} component={item.component}></Route>   
-        )
-      });
+      console.log(getRoute(menu, path));
+      return getRoute(menu, path);
     }
   }
 }
