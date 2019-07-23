@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -20,12 +20,10 @@ const mt = menuTranslater(menuData);
 ReactDOM.render(
   <IntlProvider locale={LocaleMap.getLang()} messages={LocaleMap.getMessage()}>
     <Provider store={Store}>
-      <BrowserRouter>
-        <Route path='/' component={App}>
-         {
-           mt.getRouteByPath("/")
-         }
-        </Route>
+      <BrowserRouter >
+        {
+            mt.getRoute()
+        }
       </BrowserRouter> 
     </Provider>
   </IntlProvider>,
