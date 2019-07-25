@@ -1,14 +1,10 @@
-import React from 'react';
-import { Button } from 'antd';
+import HomePage from './home';
+import withThCcBfLayout from '../../enhancer/withThCcBfLayout'
 
-const HomePage = (props) => {
-  console.log(props);
-  return (
-    <div>
-        <h1>home page</h1>
-        <Button type='primary'>button </Button>
-    </div>
-  );
-}
+const WithThCcBfLayoutHomePage = withThCcBfLayout(HomePage);
 
-export default HomePage;
+
+export {
+  HomePage,
+  WithThCcBfLayoutHomePage
+} 

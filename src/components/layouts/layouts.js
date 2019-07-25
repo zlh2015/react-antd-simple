@@ -1,0 +1,71 @@
+import React, { useState } from 'react';
+import { Layout } from 'antd';
+import { WithMenuActiveHeader, WithMenuActiveSider } from '../menu';
+
+// contents f :footer, h :header, s :sider, c :centent
+// layouts T :top, C :center, B :bottom
+// nesting layouts NT :nest top, NC :nest center, NB: nest bottom 
+// example ThCcBf, ThCscBf, ThCsNThNCcNBfBf
+
+const { Sider, Header, Content, Footer } = Layout;
+
+
+const ThCcBfLayout = (props) => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <Layout>
+      <Header style={{ background: '#fff', padding: 0 }}>        
+        <WithMenuActiveHeader path={props.location.pathname} collapsed={collapsed} setCollapsed={setCollapsed} sidebar={false} />
+      </Header>
+      <Content             
+        style={{
+          margin: '0',
+          padding: 12,
+          background: '#fff',
+          height: "calc(100vh - 70px)",
+          overflow: "auto",
+        }}>
+      </Content>
+      <Footer>
+      </Footer>
+    </Layout>
+  );
+};
+
+const CsNThNCcNLayout = (props) => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <Layout>
+      <Sider width={233} trigger={null} collapsible collapsed={collapsed}
+        style={{
+          height: "100vh",
+          overflowY: "auto",
+          overflowX: false
+        }}
+      >
+        <WithMenuActiveSider path={props.location.pathname} />
+      </Sider>
+      <Layout>
+        <Header style={{ background: '#fff', padding: 0 }}>        
+          <WithMenuActiveHeader path={props.location.pathname} collapsed={collapsed} setCollapsed={setCollapsed} sidebar={true} />
+        </Header>
+        <Content             
+          style={{
+            margin: '0',
+            padding: 12,
+            background: '#fff',
+            height: "calc(100vh - 70px)",
+            overflow: "auto",
+          }}>
+        </Content>
+      </Layout>
+    </Layout>
+  );
+};
+
+export {
+  ThCcBfLayout,
+  CsNThNCcNLayout
+}

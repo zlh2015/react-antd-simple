@@ -1,21 +1,15 @@
 
 import Loadable from 'react-loadable';
 import { signInPage, signUpPage, signOutPage} from './pages/sign';
+import { WithThCcBfLayoutHomePage } from './pages/home';
 import { pageLoader } from './components/loader';
-import App from './App'
-
-const AppPage = Loadable({
-    loader: () => import('./App'),
-    loading: pageLoader,
-    delay: 300, // default is 200ms
-});
 
 const menuData = {
   "key": "root",
   "label": "平台",
   "path": "/",
   "menu": false,
-  "component": App,
+  "component": null,
   "redirect": '/signin',
   "children": [
     {
@@ -48,7 +42,7 @@ const menuData = {
       "label": "主页",
       "path": "/home",
       "menu": true,
-      "component": null,
+      "component": WithThCcBfLayoutHomePage,
     }, 
     {
       "icon": "mail",
