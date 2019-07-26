@@ -4,7 +4,7 @@ import { Icon, Menu } from 'antd';
 const { SubMenu } = Menu;
 
 const getMenuItems = (menuData) => {
-  menuData.map((item) => {
+  return menuData.filter(i => i.menu).map((item) => {
     if (item.children instanceof Array) {
       return (
         <SubMenu key={item.key}

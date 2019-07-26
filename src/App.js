@@ -1,12 +1,24 @@
 import React from 'react';
-import {RouteComsumer } from './Context';
+import { Switch } from 'react-router-dom';
+import { GlobalConsumer } from './Context';
 import './App.css';
 
 const App = (props) => {
+  const path = props.path ? props.path : "/";
   return (
     <div className="App">
-      <RouteComsumer>
-      </RouteComsumer>
+      <GlobalConsumer>
+      {
+        ({mt}) => {
+          return (
+            <Switch>
+              { mt.getRedirectByPath(path)}
+              { mt.getRouteByPath(path)} 
+            </Switch>
+          );
+        }
+      }
+      </GlobalConsumer>
     </div>
   );
 }

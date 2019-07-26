@@ -1,6 +1,6 @@
-import {ThCcBfLayout, CsNThNCcNLayout} from './layouts';
+import {ThCcLayout, CsNThNCcNLayout} from './layouts';
 
 export {
-    ThCcBfLayout,
+    ThCcLayout,
     CsNThNCcNLayout
 }

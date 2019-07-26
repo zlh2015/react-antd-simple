@@ -11,14 +11,9 @@ export function* handleSignIn(action){
     if(response && response.status === "success"){
         LocalStorage.put('RAS-username', action.payload.userName);
         LocalStorage.put('RAS-authority', response.currentAuthority);
+        yield delay(1000); 
         yield put(Actions.signInFinish(response));
         message.info(response.message);
-        yield delay(1000); 
-        if(response.redirect){
-            window.location.href = response.redirect;
-        }else{
-            window.location.href = '/home';
-        }
     }else{
         yield put(Actions.signInFinish(response));
     }
@@ -34,9 +29,8 @@ export function* handleSignOut(action){
     if(response && response.status === "success"){
         LocalStorage.put('RAS-username', '');
         LocalStorage.put('RAS-authority', '');
-        yield put(Actions.signOutFinish(response));
         yield delay(1000); 
-        window.location.href = '/';
+        yield put(Actions.signOutFinish(response));
     }else{
         yield put(Actions.signOutFinish(response));
     }

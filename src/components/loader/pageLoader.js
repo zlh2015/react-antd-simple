@@ -17,8 +17,10 @@ const pageLoader = (props) => {
       <div className={styles['loader-wrapper']}>
         <div className={styles['loader-content']}>
             <Spin 
-              // delay={200}
-              size={'large'} />
+              delay={props.delay ? props.delay : '-'}
+              size={props.size ? props.size : 'large'} 
+              tip={props.tip ? props.tip : ''}
+              />
       </div>
     </div>
     );

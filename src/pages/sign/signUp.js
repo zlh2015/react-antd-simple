@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input, Button } from 'antd';
 import * as Http from '../../utils/http';
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout, Input, Checkbox, Icon, Button, Form } from 'antd';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { signIn } from './actions';
@@ -10,17 +11,22 @@ const { Header, Content, Footer} = Layout;
 
 
 const SignInPage = (props) => {
-  const { form, onSignIn } = props;
+  const { form, onSignIn, signining: { loading, result } } = props;
   const formItemLayout = {
     labelCol: { span: 0 },
     wrapperCol: { span: 24 },
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formVal = {a:"fff", b:"ggg"};
-    if(onSignIn){
-      onSignIn(formVal);
-    }
+    form.validateFields((err, fieldsValue) => {
+      if (err) return;
+      const formVal = {
+        ...fieldsValue,
+      };
+      if(onSignIn){
+        onSignIn(formVal);
+      }
+    });
   }
 
   return (
@@ -66,10 +72,16 @@ const SignInPage = (props) => {
             <Form.Item>
               <Checkbox className={styles['form-signin-check']}>记住</Checkbox>
               <a className={styles['form-signin-link']} href="/signup">注册</a>
-              <Button type="primary" htmlType="submit" className={styles['form-signin-btn']}>
+              <Button type="primary" htmlType="submit" loading={loading} className={styles['form-signin-btn']}>
                 登录
               </Button>
               {/* <a href="/">注册</a> */}
+              {
+                result && result.status === "success" ?
+                  <Redirect  to='/home'  exact={true} />
+                :
+                  null
+              }
             </Form.Item>
           </Form>
         </div>
@@ -81,16 +93,15 @@ const SignInPage = (props) => {
   );
 }
 const mapStateToProps = (state) => {
-  const { sign } = state;
+  const { sign: { signining } } = state;
   return {
-    sign,
+    signining,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onSignIn: (formVal) => {
-      console.log("sssss");
       dispatch(signIn(formVal));
     },
   }

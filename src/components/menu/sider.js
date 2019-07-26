@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Icon, Menu } from 'antd';
+import { Menu } from 'antd';
 import styles from './sider.module.css';
 import logo from '../../assets/images/leaf_logo.svg';
 import { getMenuItems } from './utils';

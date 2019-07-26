@@ -1,10 +1,10 @@
 import HomePage from './home';
-import withThCcBfLayout from '../../enhancer/withThCcBfLayout'
+import withThCcLayout from '../../enhancer/withLayout'
 
-const WithThCcBfLayoutHomePage = withThCcBfLayout(HomePage);
+const WithThCcLayoutHomePage = withThCcLayout(HomePage);
 
 
 export {
   HomePage,
-  WithThCcBfLayoutHomePage
+  WithThCcLayoutHomePage
 } 

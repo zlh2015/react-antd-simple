@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { checkAuthenticated } from './auth';
 
 const menuTranslater = (menu) => {
   let pathMap = {};
@@ -27,14 +28,19 @@ const menuTranslater = (menu) => {
       mapper([data]);
     },
     getItemByKey: (key) => {
-      return keyMap[key];
+      return keyMap[key]; 
     },
     getItemByPath: (path) => {
       return pathMap[path];
     },
-    getRedirect: () => {
-      return null;
-      // return redirect; 
+    getRedirectByPath: (path) => {
+      return path && pathMap[path] && pathMap[path].redirect ?
+        checkAuthenticated() ? 
+          <Redirect key={pathMap[path].key} from={pathMap[path].path} to={pathMap[path].redirect}  exact={true} />
+          : 
+          <Redirect key={pathMap[path].key} from={pathMap[path].path} to='/signin'  exact={true} />
+        :
+        null;
     },
     getRouteByPath: (path) => {
       return path && pathMap[path] && pathMap[path].children ?
@@ -44,8 +50,8 @@ const menuTranslater = (menu) => {
           }
         )
         :
-        null
-      }
+        null;
+    }
   }
 }
 

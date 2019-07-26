@@ -1,8 +1,6 @@
 
-import Loadable from 'react-loadable';
 import { signInPage, signUpPage, signOutPage} from './pages/sign';
-import { WithThCcBfLayoutHomePage } from './pages/home';
-import { pageLoader } from './components/loader';
+import { WithThCcLayoutHomePage } from './pages/home';
 
 const menuData = {
   "key": "root",
@@ -10,7 +8,7 @@ const menuData = {
   "path": "/",
   "menu": false,
   "component": null,
-  "redirect": '/signin',
+  "redirect": '/home',
   "children": [
     {
       "icon": "home",
@@ -42,7 +40,7 @@ const menuData = {
       "label": "主页",
       "path": "/home",
       "menu": true,
-      "component": WithThCcBfLayoutHomePage,
+      "component": WithThCcLayoutHomePage,
     }, 
     {
       "icon": "mail",
@@ -51,6 +49,7 @@ const menuData = {
       "path": "/mail",
       "menu": true,
       "component": null,
+      "redirect": '/mail/viewer',
       "children" :[
         {
           "icon": "",
@@ -71,7 +70,7 @@ const menuData = {
       ]
     },
     {
-      "icon": "staging",
+      "icon": "laptop",
       "key": "staging",
       "label": "工作台",
       "path": "/staging",

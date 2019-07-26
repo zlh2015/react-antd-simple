@@ -7,16 +7,16 @@ import { WithMenuActiveHeader, WithMenuActiveSider } from '../menu';
 // nesting layouts NT :nest top, NC :nest center, NB: nest bottom 
 // example ThCcBf, ThCscBf, ThCsNThNCcNBfBf
 
-const { Sider, Header, Content, Footer } = Layout;
+const { Sider, Header, Content } = Layout;
 
 
-const ThCcBfLayout = (props) => {
+const ThCcLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
     <Layout>
       <Header style={{ background: '#fff', padding: 0 }}>        
-        <WithMenuActiveHeader path={props.location.pathname} collapsed={collapsed} setCollapsed={setCollapsed} sidebar={false} />
+        <WithMenuActiveHeader path={props.location.pathname}collapsed={collapsed} setCollapsed={setCollapsed} sidebar={false} />
       </Header>
       <Content             
         style={{
@@ -26,9 +26,8 @@ const ThCcBfLayout = (props) => {
           height: "calc(100vh - 70px)",
           overflow: "auto",
         }}>
+        {props.children}
       </Content>
-      <Footer>
-      </Footer>
     </Layout>
   );
 };
@@ -66,6 +65,6 @@ const CsNThNCcNLayout = (props) => {
 };
 
 export {
-  ThCcBfLayout,
+  ThCcLayout,
   CsNThNCcNLayout
 }
