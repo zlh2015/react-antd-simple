@@ -15,7 +15,7 @@ const ThCcLayout = (props) => {
 
   return (
     <Layout>
-      <Header style={{ background: '#fff', padding: 0 }}>        
+      <Header style={{ background: '#fff', padding: 0, height: '48px' }}>        
         <WithMenuActiveHeader path={props.location.pathname}collapsed={collapsed} setCollapsed={setCollapsed} sidebar={false} />
       </Header>
       <Content             
@@ -23,7 +23,7 @@ const ThCcLayout = (props) => {
           margin: '0',
           padding: 12,
           background: '#fff',
-          height: "calc(100vh - 70px)",
+          height: "calc(100vh - 50px)",
           overflow: "auto",
         }}>
         {props.children}
@@ -47,7 +47,7 @@ const CsNThNCcNLayout = (props) => {
         <WithMenuActiveSider path={props.location.pathname} />
       </Sider>
       <Layout>
-        <Header style={{ background: '#fff', padding: 0 }}>        
+        <Header style={{ background: '#fff', padding: 0, height: '48px' }}>        
           <WithMenuActiveHeader path={props.location.pathname} collapsed={collapsed} setCollapsed={setCollapsed} sidebar={true} />
         </Header>
         <Content             
@@ -55,7 +55,7 @@ const CsNThNCcNLayout = (props) => {
             margin: '0',
             padding: 12,
             background: '#fff',
-            height: "calc(100vh - 70px)",
+            height: "calc(100vh - 50px)",
             overflow: "auto",
           }}>
         </Content>

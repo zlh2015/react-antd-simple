@@ -7,8 +7,9 @@ const getMenuItems = (menuData) => {
   return menuData.filter(i => i.menu).map((item) => {
     if (item.children instanceof Array) {
       return (
-        <SubMenu key={item.key}
-                 title={<span><Icon type={item.icon} /><span>{item.label}</span></span>}>
+        <SubMenu 
+          key={item.key}
+          title={<span><Icon type={item.icon} /><span>{item.label}</span></span>}>
           {
             getMenuItems(item.children)
           }

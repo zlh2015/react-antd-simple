@@ -46,7 +46,10 @@ const menuTranslater = (menu) => {
       return path && pathMap[path] && pathMap[path].children ?
         pathMap[path].children.map(
           (item) => {
-            return <Route key={item.key} path={item.path} component={item.component ? item.component : null} exact={item.exact ? true : false} />
+            return item.component ? 
+              <Route key={item.key} path={item.path} component={item.component} exact={item.exact ? true : false} />
+              :
+              null
           }
         )
         :

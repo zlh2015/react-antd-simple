@@ -1,0 +1,65 @@
+.viewer-box {
+    display: flex;
+    height: 100%;
+}
+
+.viewer-folder {
+    flex: 0 0 200px;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.viewer-explorer {
+    height: 100%;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-left: 0.5em;
+    display: flex;
+}
+
+.viewer-explorer-header {
+    flex: 0 0 auto;
+    background-color: aliceblue;   
+}
+
+.viewer-explorer-body {
+    flex: 1 1 auto;
+    display: flex;
+    background-color: wheat;   
+}
+
+.viewer-explorer-body-list {
+    flex: 0 0 300px;
+    background-color: wheat;   
+}
+
+.viewer-explorer-body-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: wheat;   
+}
+
+.viewer-explorer-body-content-header {
+    flex: 1 1 auto;
+    background-color: wheat;   
+}
+
+.viewer-explorer-body-content-body {
+    flex: 4 4 auto;
+    background-color: whitesmoke;   
+}
+
+
+@media only screen and (max-width: 650px) {
+    .viewer-box {
+        flex-direction: column;
+    }
+    .viewer-explorer-body {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 650px) {
+
+}

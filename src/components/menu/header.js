@@ -65,10 +65,9 @@ const Header = ({menu, current, collapsed, setCollapsed, sidebar}) => {
         <div className={styles['header-user-info']}>
           <Dropdown overlay={userMenu} placement="bottomRight">
             <span className={styles['header-dropdown-link']}>
-              <Icon type="user" /> 
-              <span> 
-                {LocalStorage.get('RAS-username') }
-              </span> 
+              <Icon type="user" size="small" > 
+              </Icon> 
+              {LocalStorage.get('RAS-username') }
             </span>
           </Dropdown>
         </div>

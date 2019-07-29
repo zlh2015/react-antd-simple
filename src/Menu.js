@@ -1,6 +1,7 @@
 
 import { signInPage, signUpPage, signOutPage} from './pages/sign';
 import { WithThCcLayoutHomePage } from './pages/home';
+import { MailPage, WithThCcLayoutViewerPage } from './pages/mail';
 
 const menuData = {
   "key": "root",
@@ -48,7 +49,7 @@ const menuData = {
       "label": "电子邮件",
       "path": "/mail",
       "menu": true,
-      "component": null,
+      "component": MailPage,
       "redirect": '/mail/viewer',
       "children" :[
         {
@@ -57,7 +58,7 @@ const menuData = {
           "label": "邮件浏览",
           "path": "/mail/viewer",
           "menu": true,
-          "component": null,
+          "component": WithThCcLayoutViewerPage,
         },
         {
           "icon": "",
