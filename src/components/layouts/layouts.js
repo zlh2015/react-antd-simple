@@ -16,12 +16,12 @@ const ThCcLayout = (props) => {
   return (
     <Layout>
       <Header style={{ background: '#fff', padding: 0, height: '48px' }}>        
-        <WithMenuActiveHeader path={props.location.pathname}collapsed={collapsed} setCollapsed={setCollapsed} sidebar={false} />
+        <WithMenuActiveHeader path={props.location.pathname} collapsed={collapsed} setCollapsed={setCollapsed} sidebar={false} />
       </Header>
       <Content             
         style={{
           margin: '0',
-          padding: 12,
+          padding: 7,
           background: '#fff',
           height: "calc(100vh - 50px)",
           overflow: "auto",
@@ -53,7 +53,7 @@ const CsNThNCcNLayout = (props) => {
         <Content             
           style={{
             margin: '0',
-            padding: 12,
+            padding: 7,
             background: '#fff',
             height: "calc(100vh - 50px)",
             overflow: "auto",

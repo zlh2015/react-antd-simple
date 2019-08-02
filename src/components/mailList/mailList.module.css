@@ -1,0 +1,94 @@
+.tool-bar {
+  margin: 1px 2px;
+  height: 2em; 
+  display: flex;
+}
+
+.tool-bar-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+}
+
+.tool-bar-right {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.mail-list {
+  height: calc(100% - 2em);
+}
+
+.item-box {
+  display: flex; 
+  margin: 1px 2px;
+  background-color: whitesmoke;
+}
+
+.item-box:hover {
+  background-color: cyan;
+}
+
+.item-box-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+}
+
+.item-box-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-box-content-top {
+  flex: 0 0 1.5em;
+  display: flex;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.item-box-content-top-subject {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.item-box-content-top-datetime {
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+.item-box-content-middle {
+  flex: 0 0 1.5em;
+  display: flex;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.item-box-content-middle-sender {
+  flex: 1 1 auto;
+}
+
+.item-box-content-middle-tags {
+  flex: 1 1 auto;
+}
+
+.item-box-content-bottom {
+  flex: 0 0 auto;
+  display: flex;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.item-box-content-bottom-content {
+  flex: 1 1 auto;
+}
+
+.item-box-content-bottom-actions {
+  flex: 1 1 auto;
+}
